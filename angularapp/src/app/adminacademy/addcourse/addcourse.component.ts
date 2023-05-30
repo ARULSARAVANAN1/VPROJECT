@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { ElementRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -29,12 +31,13 @@ export class AddcourseComponent {
       StudentsEnrolled:['', Validators.required],
       CourseDescription:['', Validators.required],
   },);
-     ngAfterViewInit() {
+    
+  }
+ ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
         .body.style.backgroundColor = '#808080';
 }
 
-  }
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
