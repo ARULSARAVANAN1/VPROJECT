@@ -1,33 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InstituteComponent } from './viewacademy/institute/institute.component';
-import { EnrolledCourseComponent } from './viewacademy/enrolledcourse/enrolled-course.component';
-import { CourselistComponent } from './viewacademy/courselist/courselist.component';
-import { ViewacademyComponent } from './viewacademy/viewacademy.component';
-import { AuthComponent } from './auth/auth.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { AdminacademyComponent } from './adminacademy/adminacademy.component';
-import { AdmininstitueComponent } from './adminacademy/admininstitue/admininstitue.component';
-import { AdmincourseComponent } from './adminacademy/admincourse/admincourse.component';
-import { AdminstudentComponent } from './adminacademy/adminstudent/adminstudent.component';
-import { StudentDetailsComponent } from './viewacademy/student-details/student-details.component';
-import { AddinstituteComponent } from './adminacademy/addinstitute/addinstitute.component';
-import { EditinstituteComponent } from './adminacademy/editinstitute/editinstitute.component';
-import { EditcourseComponent } from './adminacademy/editcourse/editcourse.component';
-import { AddcourseComponent } from './adminacademy/addcourse/addcourse.component';
-import { AddstudentComponent } from './adminacademy/addstudent/addstudent.component';
-import { UpdatestudentComponent } from './adminacademy/updatestudent/updatestudent.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { EnrolledCourseComponent } from './components/userside/enrolledcourse/enrolled-course.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { AdmincourseComponent } from './components/adminside/admincourse/admincourse.component';
+import { EditcourseComponent } from './components/adminside/editcourse/editcourse.component';
+import { AddcourseComponent } from './components/adminside/addcourse/addcourse.component';
+import { AdminstudentComponent } from './components/adminside/adminstudent/adminstudent.component';
+import { AddstudentComponent } from './components/adminside/addstudent/addstudent.component';
+import { AddinstituteComponent } from './components/adminside/addinstitute/addinstitute.component';
+import { EditinstituteComponent } from './components/adminside/editinstitute/editinstitute.component';
+import { UsersideComponent } from './components/userside/userside.component';
+import { ViewacademyComponent } from './components/userside/viewacademy/viewacademy.component';
+import { CoursesComponent } from './components/userside/courses/courses.component';
+import { AdmissionformComponent } from './components/userside/admissionform/admissionform.component';
+import { AdminsideComponent } from './components/adminside/adminside.component';
+import { AdminacademyComponent } from './components/adminside/adminacademy/adminacademy.component';
+import { EditstudentComponent } from './components/adminside/editstudent/editstudent.component';
+
 
 const routes: Routes = [
   {path:"",component:LoginComponent},
-  {path:"user",component:ViewacademyComponent,children:
+  {path:"user",component:UsersideComponent,children:
     [
-      {path:"",component:InstituteComponent},
-      {path:"institute",component:InstituteComponent},
+      {path:"",component:ViewacademyComponent},
+      {path:"institute",component:ViewacademyComponent},
       {path:"enrolledcourse",component:EnrolledCourseComponent},
-      {path:"courselist",component:CourselistComponent},
-      {path:"form",component:StudentDetailsComponent}
+      {path:"courses",component:CoursesComponent},
+      {path:"admissionform",component:AdmissionformComponent}
     ]
   },
   {path:"auth",component:AuthComponent,children:
@@ -38,16 +39,16 @@ const routes: Routes = [
    ]
   },
 
-  {path:"admin",component:AdminacademyComponent,children:
+  {path:"admin",component:AdminsideComponent,children:
    [
-      {path:"",component:AdmininstitueComponent},
-      {path:"institute",component:AdmininstitueComponent},
+      {path:"",component:AdminacademyComponent},
+      {path:"institute",component:AdminacademyComponent},
       {path:"course",component:AdmincourseComponent},
       {path:"addcourse",component:AddcourseComponent},
       {path:"editcourse",component:EditcourseComponent},
       {path:"students",component:AdminstudentComponent},
       {path:"addstudent",component:AddstudentComponent},
-      {path:"updatestudent",component:UpdatestudentComponent},
+      {path:"editstudent",component:EditstudentComponent},
       {path:"addinstitute",component:AddinstituteComponent},
       {path:"editinstitute",component:EditinstituteComponent}
 

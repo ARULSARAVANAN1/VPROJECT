@@ -8,20 +8,19 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
-  selector: 'app-student-details',
-  templateUrl: './student-details.component.html',
-  styleUrls: ['./student-details.component.css']
+  selector: 'app-editstudent',
+  templateUrl: './editstudent.component.html',
+  styleUrls: ['./editstudent.component.css']
 })
-export class StudentDetailsComponent {
+export class EditstudentComponent {
 
   faGraduationCap = faGraduationCap;
   faBuildingColumns = faBuildingColumns;
   faBookOpenReader = faBookOpenReader;
   faRightFromBracket = faRightFromBracket;
-  faUsers = faUsers;
+   faUsers = faUsers;
 
-
-  loginForm = new FormGroup({
+   loginForm = new FormGroup({
     firstName:new FormControl('',[Validators.required]),
     fatherName:new FormControl('',[Validators.required]),
     motherName:new FormControl('',[Validators.required]),
@@ -125,6 +124,5 @@ export class StudentDetailsComponent {
   {
     return this.loginForm.get('nation')
   }
-
 
 }

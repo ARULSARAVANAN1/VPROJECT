@@ -7,18 +7,17 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-updatestudent',
-  templateUrl: './updatestudent.component.html',
-  styleUrls: ['./updatestudent.component.css']
+  selector: 'app-admissionform',
+  templateUrl: './admissionform.component.html',
+  styleUrls: ['./admissionform.component.css']
 })
-export class UpdatestudentComponent {
+export class AdmissionformComponent {
 
   faGraduationCap = faGraduationCap;
   faBuildingColumns = faBuildingColumns;
   faBookOpenReader = faBookOpenReader;
   faRightFromBracket = faRightFromBracket;
   faUsers = faUsers;
-
 
   loginForm = new FormGroup({
     firstName:new FormControl('',[Validators.required]),
@@ -124,6 +123,5 @@ export class UpdatestudentComponent {
   {
     return this.loginForm.get('nation')
   }
-
 
 }

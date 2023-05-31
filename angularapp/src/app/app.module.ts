@@ -4,55 +4,55 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserNavbarComponent } from './viewacademy/user-navbar/user-navbar.component';
-import { InstituteComponent } from './viewacademy/institute/institute.component';
-import { EnrolledCourseComponent } from './viewacademy/enrolledcourse/enrolled-course.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CourselistComponent } from './viewacademy/courselist/courselist.component';
-import { ViewacademyComponent } from './viewacademy/viewacademy.component';
-import { AuthComponent } from './auth/auth.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
 import { RouterModule } from '@angular/router';
-import { AdminacademyComponent } from './adminacademy/adminacademy.component';
-import { AdminNavbarComponent } from './adminacademy/admin-navbar/admin-navbar.component';
-import { AdmincourseComponent } from './adminacademy/admincourse/admincourse.component';
-import { AdmininstitueComponent } from './adminacademy/admininstitue/admininstitue.component';
-import { AdminstudentComponent } from './adminacademy/adminstudent/adminstudent.component';
-import { StudentDetailsComponent } from './viewacademy/student-details/student-details.component';
-import { AddinstituteComponent } from './adminacademy/addinstitute/addinstitute.component';
-import { EditinstituteComponent } from './adminacademy/editinstitute/editinstitute.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { EditcourseComponent } from './adminacademy/editcourse/editcourse.component';
-import { AddcourseComponent } from './adminacademy/addcourse/addcourse.component';
-import { AddstudentComponent } from './adminacademy/addstudent/addstudent.component';
-import { UpdatestudentComponent } from './adminacademy/updatestudent/updatestudent.component';
+import { UserNavbarComponent } from './components/userside/user-navbar/user-navbar.component';
+import { EnrolledCourseComponent } from './components/userside/enrolledcourse/enrolled-course.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AdminNavbarComponent } from './components/adminside/admin-navbar/admin-navbar.component';
+import { AdmincourseComponent } from './components/adminside/admincourse/admincourse.component';
+import { AdminstudentComponent } from './components/adminside/adminstudent/adminstudent.component';
+import { AddinstituteComponent } from './components/adminside/addinstitute/addinstitute.component';
+import { EditinstituteComponent } from './components/adminside/editinstitute/editinstitute.component';
+import { EditcourseComponent } from './components/adminside/editcourse/editcourse.component';
+import { AddcourseComponent } from './components/adminside/addcourse/addcourse.component';
+import { AddstudentComponent } from './components/adminside/addstudent/addstudent.component';
+import { AdminsideComponent } from './components/adminside/adminside.component';
+import { UsersideComponent } from './components/userside/userside.component';
+import { ViewacademyComponent } from './components/userside/viewacademy/viewacademy.component';
+import { CoursesComponent } from './components/userside/courses/courses.component';
+import { AdmissionformComponent } from './components/userside/admissionform/admissionform.component';
+import { EditstudentComponent } from './components/adminside/editstudent/editstudent.component';
+import { AdminacademyComponent } from './components/adminside/adminacademy/adminacademy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserNavbarComponent,
-    InstituteComponent,
     EnrolledCourseComponent,
-    CourselistComponent,
-    ViewacademyComponent,
     AuthComponent,
     SignupComponent,
     LoginComponent,
-    AdminacademyComponent,
     AdminNavbarComponent,
     AdmincourseComponent,
-    AdmininstitueComponent,
     AdminstudentComponent,
-    StudentDetailsComponent,
     AddinstituteComponent,
     EditinstituteComponent,
     EditcourseComponent,
     AddcourseComponent,
     AddstudentComponent,
-    UpdatestudentComponent
+    AdminsideComponent,
+    UsersideComponent,
+    ViewacademyComponent,
+    CoursesComponent,
+    AdmissionformComponent,
+    EditstudentComponent,
+    AdminacademyComponent
   ],
   imports: [
     BrowserModule,
