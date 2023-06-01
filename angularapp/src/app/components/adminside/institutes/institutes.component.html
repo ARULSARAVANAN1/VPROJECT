@@ -1,0 +1,44 @@
+<!-- Authors- Arulsaravanan-->
+<app-admin-navbar></app-admin-navbar>
+
+<div class="institute">
+  <br>
+  <div class = "searchbar">
+    <div class="form-group">
+      <input type="search" class="form-control me-2 search"  placeholder="Type here to search Institute" id="searchButton" [(ngModel)]="searchText"/>
+      <button type="button" class="btn btn">Search</button>
+    </div>
+  </div>
+  <br>
+
+<div>
+  <div class = "container">
+    <div class = "row row-cols-1 row-cols-md-4 g-4">
+        <ng-container *ngFor = "let institute of institutes | filter:searchText">
+            <div class="col">
+
+              <div class="card shadow-lg bg-body rounded thumbcard mb-4">
+                 <img class="card-img-top" [src]="institute.src" alt="Card image cap" routerLink="/admin/course">
+                  <div class="card-body">
+                      <h5 class="card-title">{{institute.name}}</h5>
+                      <p class="card-text mt-2 mb-2 d-inline text-muted">Place: {{institute.Place}}</p><br>
+
+                      <div class="star">
+                        <ngb-rating [max]="5" [readonly]="true" [rate] = "institute.rating">:</ngb-rating>
+                        <div class="icons">
+                          <a (click)="gotoeditinstitute()"><fa-icon [icon]="faPenToSquare" style="margin-right: 12px;" ></fa-icon></a>
+                          <a (click)="alert()"><fa-icon [icon]="faTrash"></fa-icon></a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="addButtondiv">
+        <button class="btn btn-success addButton" routerLink="/admin/addinstitute"><fa-icon [icon]="faCirclePlus"></fa-icon> &nbsp;Add Institute</button>
+      </div>
+</div>
+
+</div>

@@ -1,0 +1,93 @@
+.section {
+	position: relative;
+	height: 70vh;
+}
+
+.section .section-center {
+	position: absolute;
+	top: 50%;
+  margin-left: 350px;
+  margin-right: 100px;
+	transform: translateY(-50%);
+}
+
+#addinstitute {
+	font-family: 'PT Sans', sans-serif;
+	/* background-image: url('../img/background.jpg'); */
+	background-size: cover;
+	background-position: center;
+}
+
+.addinstitute-form {
+	background: rgba(96, 93, 93, 0.7);
+	padding: 40px;
+	border-radius: 6px;
+  width: 800px;
+}
+
+.addinstitute-form .form-group {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.addinstitute-form .form-control {
+	background-color: #fff;
+	height: 50px;
+	color: #191a1e;
+	border: none;
+	font-size: 16px;
+	font-weight: 400;
+	border-radius: 4px;
+	padding: 0px 25px;
+}
+
+
+.addinstitute-form .form-control:-ms-input-placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.addinstitute-form .form-control::placeholder {
+	color: rgba(82, 82, 84, 0.4);
+}
+
+.addinstitute-form .form-label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 24px;
+	height: 24px;
+	font-size: 12px;
+	color: #fff;
+}
+
+.btn{
+	background-color: #286536;
+  color: white;
+  border: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0px;
+  cursor: pointer;
+  margin-right: 8px;
+  height: 38px;
+  border-radius: 4px;
+}
+
+.btn:active{
+  opacity: 0.8;
+  background-color: #56a180;
+  color: rgb(24, 3, 11);
+}
+
+  .addinstitute-form .form-btn{
+    text-align: center;
+  }
+
+  .spanmsg
+  {
+    color: rgb(190, 45, 45);
+    font-size: small;
+  }
+
+

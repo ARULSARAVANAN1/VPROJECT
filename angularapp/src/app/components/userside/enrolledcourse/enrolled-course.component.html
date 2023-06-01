@@ -1,0 +1,16 @@
+<!-- Authors- Pavithra and tanusha -->
+
+<app-user-navbar></app-user-navbar>
+<div class="enrolledcourse">
+<div class="p4"></div>
+    <div class="container" *ngFor="let ec of enrollcourse" id="enrolledCourse">
+        <div class="row">
+            <div class="col-xs-6 p3">
+              <p>Course Name: {{ec.CourseName}}</p>
+              <p>Joined Date: {{ec.JoinDate}}</p>
+              <p>Course End Date: {{ec.CourseEndDate}}</p>
+              <button href="#" class="b1">My Learning</button>
+            </div>
+        </div>
+    </div>
+</div>

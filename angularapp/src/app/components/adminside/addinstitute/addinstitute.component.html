@@ -1,0 +1,77 @@
+<!-- Authors- Arulsaravanan-->
+<app-admin-navbar></app-admin-navbar>
+
+<div id="addinstitute" class="section">
+  <div class="section-center">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="addinstitute-form">
+
+          <form #addInstituteForm = "ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Academy name &nbsp;<fa-icon [icon]="faGraduationCap"></fa-icon></span>
+                    <input class="form-control" type="text" placeholder="Enter the academy name" name="academyname"  id="editAcademyName" [(ngModel)]="formdata.academyname" #academyname="ngModel" required>
+                    <span *ngIf="academyname.touched && academyname.errors?.['required']" class="spanmsg">*Academy name is required</span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Contact number &nbsp;<fa-icon [icon]="faPhone"></fa-icon></span>
+                  <input class="form-control" type="text" placeholder="Enter the contact number" id="editContactNumber"  name="contactnumber" [(ngModel)]="formdata.contactnumber" #contactnumber="ngModel" required>
+                  <span *ngIf="contactnumber.touched && contactnumber.errors?.['required']" class="spanmsg">*Contact Number is required.</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Image URL &nbsp;<fa-icon [icon]="faImage"></fa-icon></span>
+                  <input class="form-control" type="text" id="editimageUrl" placeholder="Enter the academy image url" name="imageurl" [(ngModel)]="formdata.image" #imageurl="ngModel" required>
+                  <span *ngIf="imageurl.touched && imageurl.errors?.['required']" class="spanmsg">*Image URL is required</span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Academy Email &nbsp;<fa-icon [icon]="faEnvelope"></fa-icon></span>
+                  <input class="form-control" id="editEmailId" type="text" placeholder="Enter the academy email" id="editEmailId"  name="email" [(ngModel)]="formdata.email" #email="ngModel" required>
+                  <span *ngIf="email.touched && email.errors?.['required']" class="spanmsg">*Email ID is required.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Location  &nbsp;<fa-icon [icon]="faLocationDot"></fa-icon></span>
+                  <input class="form-control" type="text" name="location"  id="editAcademyLocation" placeholder ="Enter Academy Location "  [(ngModel)]="formdata.location" #location="ngModel" required>
+                  <span *ngIf="location.touched &&location.errors?.['required']" class="spanmsg">*Academy Location is required </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Description</span>
+                  <input class="form-control" type="text" placeholder="Enter Academy discription" id="editAcademyDescription"  name="description" [(ngModel)]="formdata.discription" #description="ngModel" required >
+                  <span *ngIf="description.touched && description.errors?.['required']" class="spanmsg">*Description is required.</span>
+                </div>
+								</div>
+              </div>
+                <div class="form-btn">
+                  <button class="btn btn-success" [disabled] ="addInstituteForm.invalid">Add Institute</button>
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
