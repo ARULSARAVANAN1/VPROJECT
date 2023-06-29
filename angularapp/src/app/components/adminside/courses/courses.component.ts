@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { Course } from 'src/app/class/course';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash} from '@fortawesome/free-solid-svg-icons';
 import { faCirclePlus} from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdminserviceService } from 'src/app/service/adminservice/adminservice.service';
+import { Courses } from 'src/app/class/courses';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-courses',
@@ -18,25 +21,60 @@ export class CoursesComponent {
 
   searchText!:string;
 
-
-  constructor(private router: Router){}
-
-  Courses:Course[]=[
-    new Course(" M.E(VSI)",2," 9am to 4pm","yyy",222),
-    new Course(" M.SC(CS)",2," 9am to 4pm","yyy",122),
-    new Course(" M.E(ECE)",2," 9am to 4pm","yyy",50)
-  ];
+  instituteId !:number;
+  courses ?: Courses[];
 
 
-    alert()
+  constructor(private router: Router,private adminservice :AdminserviceService,
+              private route:ActivatedRoute,private modalService: NgbModal){}
+
+  ngOnInit(): void {
+
+    this.instituteId = this.route.snapshot.params['instituteId'];
+    console.log(this.instituteId);
+    this.getInstituteCourses();
+  }
+
+  //to get the courses in the institutes
+  getInstituteCourses()
+  {
+    this.adminservice.viewCoursesFromInstitute(this.instituteId).subscribe(data =>{
+      this.courses = data;
+      console.log(this.courses);
+    })
+  }
+
+    goteditcourse(courseId :number)
     {
-      alert("Institute deleted successfully");
+      this.router.navigate(['/admin/editcourse',courseId]);
     }
 
-    goteditcourse()
+    addcourse()
     {
-      this.router.navigate(['/admin/editcourse']);
+      this.router.navigate(['/admin/addcourse',this.instituteId]);
     }
+
+    //for delete popup modal
+    open(content:any) {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+          console.log(result);
+      }, (reason) => {
+        console.log(reason);
+      });
+    }
+
+    //delete the course by the course id
+    delete(courseId :number)
+    {
+        this.modalService.dismissAll();
+        this.adminservice.deleteCourse(courseId).subscribe(data =>
+          {
+            console.log(courseId);
+            this.getInstituteCourses();
+        });
+
+    }
+
 
 
 }

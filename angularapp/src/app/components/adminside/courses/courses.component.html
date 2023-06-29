@@ -3,37 +3,57 @@
 <app-admin-navbar></app-admin-navbar>
 
     <div class="courses">
-      <br>
+      <br><br>
       <div class = "searchbar">
         <div class="form-group">
           <input type="search" class="form-control me-2 search"  placeholder="Type here to search course" id="searchButton" [(ngModel)]="searchText"/>
-          <button type="button" class="btn btn">Search</button>
+          <button type="button" class="searchbtn">Search</button>
         </div>
       </div>
       <br>
 
         <div class = "container">
-              <ng-container *ngFor = "let course of Courses | filter:searchText">
+              <ng-container *ngFor = "let course of courses | filter:searchText">
                     <div class="card shadow-lg rounded mb-4">
                         <div class="card-body">
                           <div class="left">
-                            <h6 class="card-subtitle">Course name : {{course.Coursename}}</h6><br>
-                            <h6 class="card-subtitle">Course duration : {{course.Courseduration}}hrs</h6><br>
-                            <h6 class="card-subtitle">Course Available timings : {{course.Coursetimings}}</h6><br>
+                            <h6 class="card-subtitle">Course name : {{course.courseName}}</h6><br>
+                            <h6 class="card-subtitle">Course duration : {{course.courseDuration}} years</h6><br>
+                            <h6 class="card-subtitle">Course Available timings : {{course.courseTiming}}</h6><br>
                           </div>
                             <div class="right">
-                            <h6 class="card-subtitle">Number of Students : {{course.noOfStudentsEnrolled}}</h6><br>
-                            <h6 class="card-subtitle">Course Description : {{course.Coursedescription}}</h6><br>
+                            <h6 class="card-subtitle">Number of Students : {{course.enrolledStudents}}</h6><br>
+                            <h6 class="card-subtitle">Course Description : {{course.courseDescription}}</h6><br>
                           </div>
                             <div class="icons">
-                              <a (click)="goteditcourse()"><fa-icon [icon]="faPenToSquare" style="margin-right: 12px;" ></fa-icon></a>
-                              <a (click)="alert()"><fa-icon [icon]="faTrash"></fa-icon></a>
+                              <a (click)="goteditcourse(course.courseId)"><fa-icon [icon]="faPenToSquare" style="margin-right: 12px;" ></fa-icon></a>
+                              <!-- <a (click)="deleteCourse(course.courseId)"><fa-icon [icon]="faTrash"></fa-icon></a> -->
+
+                              <a (click)="open(content)" id="deleteInsitute"><fa-icon [icon]="faTrash" ></fa-icon></a>
+
+                              <!-- codes for the popup -->
+                              <ng-template #content let-modal >
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Confirm Delete</h4>
+                                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  Are you sure you want to delete this item?
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel')">Cancel</button>
+                                  <button type="button" class="btn btn-danger" (click)="delete(course.courseId)">Delete</button>
+                                </div>
+                              </ng-template>
+
                             </div>
                         </div>
                     </div>
                 </ng-container>
                 <div class="addButtondiv">
-                  <button class="btn btn-success addButton" routerLink="/admin/addcourse"><fa-icon [icon]="faCirclePlus"></fa-icon> &nbsp;Add Course</button>
+                  <button class="btn btn-success addButton" (click)="addcourse()"><fa-icon [icon]="faCirclePlus"></fa-icon> &nbsp;Add Course</button>
                 </div>
               </div>
   </div>

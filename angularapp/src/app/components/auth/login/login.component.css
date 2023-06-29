@@ -76,3 +76,27 @@ h2{
   display: inline-block;
   margin-left: 10px;
 }
+
+
+.modal-dialog  {
+  position: fixed;
+  margin: auto;
+  width: 300px;
+  margin-top: 20px;
+  margin-right: 20px;
+  height: 100px;
+  right: 0px;
+}
+
+.modal-content
+{
+  height: 60px;
+  padding: 20px 10px 10px 10px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgb(139, 229, 226),
+    rgb(184, 230, 174)
+  );
+  box-shadow: 10px;
+}

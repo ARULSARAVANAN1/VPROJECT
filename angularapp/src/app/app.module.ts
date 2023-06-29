@@ -32,6 +32,9 @@ import { UserhomepageComponent } from './components/userside/userhomepage/userho
 import { CoursesComponent } from './components/adminside/courses/courses.component';
 import { AdduserComponent } from './components/adminside/adduser/adduser.component';
 import { EdituserComponent } from './components/adminside/edituser/edituser.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +61,7 @@ import { EdituserComponent } from './components/adminside/edituser/edituser.comp
     UserhomepageComponent,
     CoursesComponent,
     AdduserComponent,
-    EdituserComponent,
+    EdituserComponent
 
   ],
   imports: [
@@ -70,7 +73,9 @@ import { EdituserComponent } from './components/adminside/edituser/edituser.comp
     FontAwesomeModule,
     RouterModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()  // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

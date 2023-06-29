@@ -1,35 +1,71 @@
 <!-- authors - Deepika, Diveesh -->
-
 <app-admin-navbar></app-admin-navbar>
+<div class="studentpage">
 
-<div class="container">
+  <div class="container">
+    <br>
+      <div class = "searchbar">
+        <div class="form-group">
+          <input type="search" class="form-control me-2 search"  placeholder="Type here to search student" id="searchButton" [(ngModel)]="searchText"/>
+          <button type="button" class="btn btn">Search</button>
+        </div>
+      </div><br>
 
-<div class = "searchbar">
-  <div class="form-group">
-    <input type="search" class="form-control me-2 search"  placeholder="Type here to search student" id="searchButton" [(ngModel)]="searchText"/>
-    <button type="button" class="btn btn">Search</button>
-  </div>
+      <table class="table table-striped table-hover">
+        <thead class="table tablebar">
+        <tr class="heading">
+            <th >Student ID</th>
+            <th>Student Name</th>
+            <th>Enrolled Course</th>
+            <th>Mobile Number</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students | filter:searchText" class="record">
+              <td style="padding: 15px;" ><strong>{{student.studentId}}</strong></td>
+              <td style="padding: 15px;">{{student.studentName}}</td>
+              <td style="padding: 15px;">{{student.enrolledCourse}}</td>
+              <td style="padding: 15px;">{{student.mobileNumber}}</td>
+              <td style="padding: 15px;">
+                <button routerLink="/admin/editstudent">&nbsp; <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></button>
+                <button class="del-btn" (click)="deleteStudent()"> <i class="fa fa-trash" aria-hidden="true" ></i> </button>
+              </td>
+          </tr>
+        </tbody>
+    </table>
+  <button class="btn addstudent" routerLink="/admin/addstudent">&#8853; Add Student</button>
+</div>
 </div>
 
 
-  <table class="std-table">
-    <tr class="heading">
-        <th>Student ID</th>
-        <th>Student Name</th>
-        <th>Enrolled Course</th>
-        <th>Mobile Number</th>
-        <th>Actions</th>
-    </tr>
-    <tr *ngFor="let student of students | filter:searchText">
-        <td>{{student.studentId}}</td>
-        <td>{{student.studentName}}</td>
-        <td>{{student.enrolledCourse}}</td>
-        <td>{{student.mobileNumber}}</td>
-        <td class="actions">
-          <button routerLink="/admin/editstudent">&#9998;</button>
-          <button class="del-btn" (click)="deleteStudent()">&#10006;</button>
-        </td>
-    </tr>
-  </table>
-  <button class="add-std" routerLink="/admin/addstudent">&#8853; Add Student</button>
-</div>
+
+
+<!-- <table class = "table table-striped table-hover">
+  <thead class="thead-dark">
+      <tr>
+          <th >Event Name</th>
+          <th>Event Date</th>
+          <th >Event Time</th>
+          <th>Event Cost </th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr class="record" *ngFor = "let e of events">
+
+          <td style="padding: 25px;"><strong>{{e.eventName}}</strong></td>
+          <td style="padding: 25px;"><strong>{{e.eventDate}}</strong></td>
+          <td style="padding:25px;"><strong>{{e.eventTime}}</strong></td>
+          <td style="padding: 25px;"><strong>{{e.eventCost}}</strong></td>
+          <td style="padding:25px">
+              <button id="editBooking" class="btn btn-primary me-2" (click) = "updateEvent(e.eventId)">Edit &nbsp;
+                  <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>
+              </button>
+              <button id="deleteBooking" class="btn bg-danger text-white " (click)="deleteBookedEvent(e.eventId)">Delete&nbsp;
+                  <i class="fa fa-trash" aria-hidden="true" ></i>
+              </button>
+          </td>
+      </tr>
+  </tbody>
+</table> -->

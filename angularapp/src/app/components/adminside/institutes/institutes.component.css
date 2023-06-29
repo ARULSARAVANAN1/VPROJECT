@@ -1,11 +1,11 @@
-.btn
+.searchbtn
 {
-  background-color: #1a6824;
+  background-color: rgb(58, 135, 58);
   color: white;
   border: none;
   padding-left: 30px;
   padding-right: 30px;
-  border-radius: 0px;
+  border-radius: 2px;
   cursor: pointer;
   margin-right: 8px;
   transition: opacity 0.15s;
@@ -13,13 +13,13 @@
   height: 38px;
 }
 
-.btn:active{
+.searchbtn:active{
   opacity: 0.4;
   background-color: #71b64f;
   color: rgb(12, 24, 3);
 }
 
-.btn:hover{
+.searchbtn:hover{
   opacity: 0.9;
 }
 
@@ -46,13 +46,10 @@ ngb-rating
 .institute
 {
   background: linear-gradient(
-    rgb(175, 236, 128),
-    rgba(152, 195, 11, 0.303),
-    rgba(163, 13, 143, 0.303),
-    rgba(150, 235, 3, 0.303)
+    rgb(184, 234, 182),
+    rgb(211, 236, 206),
+    rgba(105, 217, 120, 0.303)
   );
-  /* animation:my-animation 5s infinite alternate ; */
-  /* background-color: rgb(216, 223, 149); */
   height: fit-content;
   min-height: 800px;
 }
@@ -102,7 +99,7 @@ ngb-rating
   margin-left: 100px;
   padding-top: 7px;
   padding-left: 4px;
-  font-size: large;
+  font-size:large;
 }
 
 .card-body
@@ -112,7 +109,7 @@ ngb-rating
 
 .addButton
 {
-  background-color: green;
+  background-color: rgb(58, 135, 58);
   margin: auto;
   border-radius: 10px;
   width: 160px;

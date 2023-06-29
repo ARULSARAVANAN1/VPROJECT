@@ -1,3 +1,8 @@
+.searchbar
+{
+  text-align: center;
+}
+
 .search
 {
   display: inline-block;
@@ -36,7 +41,7 @@
   opacity: 0.9;
 }
 
-.courses
+.usercourses
 {
   background: linear-gradient(
     rgb(182, 134, 234),
@@ -45,21 +50,18 @@
   );
   display: block;
   animation: -animation 5s infinite alternate ;
-  /* background-color: rgb(216, 223, 149); */
+  background-color: rgb(216, 223, 149);
   height: fit-content;
   min-height: 1100px;
 }
 
-.searchbar
-{
-  text-align: center;
-}
+
 
 .container
 {
   margin-top: 10px;
   width: 600px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .left
@@ -72,14 +74,13 @@
 {
   display:inline-block;
   vertical-align: top;
-  margin-left: 100px;
+  margin-left: 65px;
 }
 
 .button
 {
   text-align: end;
 }
-
 
 .enrollbutton
 {
@@ -110,12 +111,13 @@
 .card-body
 {
   margin-top: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .card
 {
   background-color: lightgrey;
-  margin-bottom: 10px;
   cursor: pointer;
+  width: 650px;
+  /* margin-bottom: 50px; */
 }

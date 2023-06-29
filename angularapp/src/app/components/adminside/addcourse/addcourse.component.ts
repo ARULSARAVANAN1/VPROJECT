@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdminserviceService } from 'src/app/service/adminservice/adminservice.service';
+import { Courses } from 'src/app/class/courses';
 
 
 @Component({
@@ -11,50 +14,35 @@ import { NgForm } from '@angular/forms';
 })
 export class AddcourseComponent {
 
-  CourseName:string='';
-  CourseDuration:string='';
-  CourseTimings:string='';
-  StudentsEnrolled:any;
-  CourseDescription:string='';
+  constructor(private router:Router,private adminservice:AdminserviceService,private route:ActivatedRoute) { }
 
-  registerForm!: FormGroup;
-  submitted = false;
+  course : Courses = new Courses();
+  instituteId !:number;
 
-  constructor(private formBuilder: FormBuilder,private elementRef: ElementRef) { }
+  ngOnInit(): void {
 
-  ngOnInit(){
-
-    this.registerForm = this.formBuilder.group({
-      CourseName: ['', Validators.required],
-      CourseDuration: ['', Validators.required],
-      CourseTimings:['', Validators.required],
-      StudentsEnrolled:['', Validators.required],
-      CourseDescription:['', Validators.required],
-  },);
-    
+    this.instituteId = this.route.snapshot.params['instituteId'];
+    console.log(this.instituteId);
   }
- ngAfterViewInit() {
-    this.elementRef.nativeElement.ownerDocument
-        .body.style.backgroundColor = '#808080';
-}
 
-  get f() { return this.registerForm.controls; }
+  onSubmit()
+  {
+    console.log(this.course);
+    this.addCourse();
+  }
 
-  onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
-        return;
-    }
-
-    // display form values on success
-    alert('SUCCESSfull!! Added Course');
-}
-
-onReset() {
-    this.submitted = false;
-    this.registerForm.reset();
-}
+  addCourse()
+  {
+    this.course.instituteId = this.instituteId;
+    this.adminservice.addCourse(this.course).subscribe(data =>
+      {
+        console.log(data);
+        alert("Institute Course added Sucessfully");
+        this.router.navigate(['/admin/course',this.instituteId]);
+      })
+   }
 
 }
+
+
+

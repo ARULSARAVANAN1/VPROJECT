@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from './_helpers/must-match.validator';
 import { User } from 'src/app/class/user';
-import { LoginserviceService } from 'src/app/service/loginservice.service';
+import { LoginserviceService } from 'src/app/service/loginservice/loginservice.service';
 
 @Component({
   selector: 'app-signup',
@@ -46,43 +46,42 @@ export class SignupComponent implements OnInit{
         this.newuser.userRole = this.userAdmin;
         this.newuser.username = this.userName;
         console.log(this.newuser);
+        this.checkmailid();
 
       }
 
-    // the below code belongs to backend connectivity - dont remove this
+      //check the mailid with db,to check if exist or not
+      checkmailid()
+      {
+        this.loginservice.checkUserAvailabilityByEmail(this.newuser.email).subscribe((data) =>{
+          console.log(data);
+          if(data == true) {
+            alert("Account already exist..! Go to Login page");
+            this.registerForm.reset();
+          }
+          else
+            this.createaccount();
+        });
+      }
 
-      // //check the mailid with db,to check if exist or not
-      // checkmailid()
-      // {
-      //   this.loginservice.checkUserAvailabilityByEmail(this.newuser.email).subscribe((data) =>
-      //   {
-      //     // console.log(data);
-      //     if(data == true)
-      //     {
-      //       alert("Account already exist..! Go to Login page");
-      //       this.registerForm.reset();
-      //     }
-      //     else
-      //       this.createaccount();
-      //   });
-      // }
+      createaccount()
+      {
+        if(this.newuser.userRole == "Admin") {
+          this.loginservice.saveAdmin(this.newuser).subscribe((data) =>
+          {
+            console.log(data);});
+            alert("Admin Account created sucessfully");
+            this.registerForm.reset();
+        }
 
-      // createaccount()
-      // {
-      //   if(this.newuser.userRole == "Admin")
-      //   {
-      //     this.loginservice.RegisterAdmin(this.newuser).subscribe((data) =>
-      //     {console.log(data);});
-      //     alert("Admin Account created sucessfully");
-      //     this.registerForm.reset();
-      //   }
-      //   else if(this.newuser.userRole == "User")
-      //   {
-      //     this.loginservice.RegisterUser(this.newuser).subscribe((data) =>
-      //     {console.log(data);});
-      //     alert("User Account created sucessfully");
-      //     this.registerForm.reset();
-      //   }
-      // }
+        else if(this.newuser.userRole == "User")
+          {
+            this.loginservice.saveUser(this.newuser).subscribe((data) =>
+            {
+              console.log(data);});
+              alert("User Account created sucessfully");
+              this.registerForm.reset();
+            }
+          }
 
     }

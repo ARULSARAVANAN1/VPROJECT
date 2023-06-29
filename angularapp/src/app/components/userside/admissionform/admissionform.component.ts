@@ -19,6 +19,9 @@ export class AdmissionformComponent {
   faRightFromBracket = faRightFromBracket;
   faUsers = faUsers;
 
+
+
+
   loginForm = new FormGroup({
     firstName:new FormControl('',[Validators.required]),
     fatherName:new FormControl('',[Validators.required]),

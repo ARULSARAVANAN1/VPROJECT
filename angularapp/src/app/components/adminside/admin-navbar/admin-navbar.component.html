@@ -19,7 +19,7 @@
         </li>
 
         <li class = "nav-link" id="adminCourse" style="padding-right:300px;">
-          <a routerLink="/admin/course" routerLinkActive="active" class="nav-link"><fa-icon [icon]="faBook"></fa-icon> &nbsp;Course</a>
+          <a routerLink="/admin/course" routerLinkActive="active" class="nav-link disabled"><fa-icon [icon]="faBook"></fa-icon> &nbsp;Course</a>
         </li>
 
         <li class = "nav-link" id="adminStudents">
@@ -30,13 +30,12 @@
       <ul class ="navbar-nav ms-auto " id="logout"
          style="padding-right:0px;">
 
-
-
          <li class = "nav-link">
-          <a routerLink="/auth/login" routerLinkActive="active" class="nav-link"><fa-icon [icon]="faRightFromBracket"></fa-icon> &nbsp;Logout</a>
+          <a (click)="gotToLogin()" routerLinkActive="active" class="nav-link"><fa-icon [icon]="faRightFromBracket"></fa-icon> &nbsp;Logout</a>
         </li>
 
       </ul>
   </div>
 </div>
 </nav>
+

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/class/login';
-import { LoginserviceService } from 'src/app/service/loginservice.service';
+import { LoginserviceService } from 'src/app/service/loginservice/loginservice.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -10,87 +11,103 @@ import { LoginserviceService } from 'src/app/service/loginservice.service';
 })
 export class LoginComponent {
 
-  // formdata = {email:"",password:""};
   login : Login = new Login();
   userRole !: String;
 
-  constructor(private router:Router,private loginservice : LoginserviceService)
-  {}
+  constructor(private router:Router,private loginservice : LoginserviceService,
+              private toastr :ToastrService){}
 
   onSubmit()
   {
     console.log(this.login);
 
-    if(this.login.email == "admin" && this.login.password == "admin" )
+    this.loginservice.checkUserRole(this.login.email).subscribe((data) =>
     {
-      this.gotoAdmin();
-    }
-    else if(this.login.email == "user" && this.login.password == "user" )
-    {
-      this.gotoUser();
-    }
-    else
-    {
-      alert("error credentials");
-    }
+      this.userRole = data;
+      console.log(this.userRole);
 
+      if(this.userRole == "Admin"){
+        this.validateadmin();
+      }
 
+      else if(this.userRole == "User"){
+        this.validateuser();
+      }
 
-
-
-
-    // the below code belongs to backend connectivity - dont remove this
-
-    // this.loginservice.checkUserRole(this.login.email).subscribe((data) =>
-    // {
-    //   this.userRole = data;
-    //   console.log(this.userRole);
-
-    //   if(this.userRole == "Admin")
-    //   {
-    //     this.validateadmin();
-    //   }
-    //   else if(this.userRole == "User")
-    //   {
-    //     this.validateuser();
-    //   }
-
-    //   else
-    //   {
-    //     alert("Mail id not exist create Account");
-    //   }
-
-    // });
+      else{
+        this.toastr.error('Account not exist!', 'Login Status !');
+      }
+    });
   }
 
-  // validateadmin()
-  // {
-  //   console.log(this.login);
-  //   this.loginservice.checkAdmin(this.login).subscribe((data) =>
-  //   {
-  //     console.log(data);
-  //     this.gotoAdmin();
-  //   });
-  // }
-
-  // validateuser()
-  // {
-  //   console.log(this.login);
-  //   this.loginservice.checkUser(this.login).subscribe((data) =>
-  //   {
-  //     console.log(data);
-  //     this.gotoUser();
-  //   });
-  // }
-
-  gotoAdmin()
+  validateadmin()
   {
-    this.router.navigate(['/admin']);
+    console.log(this.login);
+
+    this.loginservice.isAdminPresent(this.login).subscribe((data) =>
+    {
+      if(data == true){
+        console.log(data);
+        this.gotoAdmin();
+        this.loginservice.loginstatus = true;
+      }
+      else
+      {
+        this.toastr.error('Incorrect Admin Password !', 'Login Status !');
+      }
+
+    });
   }
 
-  gotoUser()
+  validateuser()
   {
-    this.router.navigate(['/user']);
+    console.log(this.login);
+    this.loginservice.isUserPresent(this.login).subscribe((data) =>
+    {
+      if(data == true){
+        console.log(data);
+        this.gotoUser();
+        this.loginservice.loginstatus = true;
+      }
+      else
+      {
+        this.toastr.error('Incorrect User Password !', 'Login Status !');
+      }
+    });
   }
+
+    gotoAdmin()
+    {
+      //alert popup
+      this.toastr.success('Admin Login successful !', 'Login Status !');
+      this.router.navigate(['/admin']);
+    }
+
+    gotoUser()
+    {
+       //alert popup
+      this.toastr.success('User Login successful !', 'Login Status !');
+      this.router.navigate(['/user']);
+    }
+
+
+
+
+    // public showSuccess(): void {
+    //   this.toastr.success('Login Successfull!', 'Login Status !',{
+    //       timeOut:2000,});
+    // }
+
+    // public showInfo(): void {
+    //   this.toastr.info('Message Info!', 'Title Info!');
+    // }
+
+    // public showWarning(): void {
+    //   this.toastr.warning('Message Warning!', 'Title Warning!');
+    // }
+
+    // public showError(): void {
+    //   this.toastr.error('Message Error!', 'Title Error!');
+    // }
 
 }

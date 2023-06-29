@@ -27,32 +27,35 @@ const routes: Routes = [
       {path:"",component:UserhomepageComponent},
       {path:"institute",component:UserhomepageComponent},
       {path:"enrolledcourse",component:EnrolledCourseComponent},
-      {path:"courses",component:CourselistComponent},
-      {path:"admissionform",component:AdmissionformComponent}
-    ]
+      {path:"courses/:instituteId",component:CourselistComponent},
+      {path:"admissionform/:courseId/:instituteId",component:AdmissionformComponent}
+    ],
+    // canActivate: [AuthComponent]
   },
   {path:"auth",component:AuthComponent,children:
    [
       {path:"",component:LoginComponent},
       {path:"login",component:LoginComponent},
       {path:"signup",component:SignupComponent},
-   ]
+   ],
+
   },
 
   {path:"admin",component:AdminsideComponent,children:
    [
       {path:"",component:InstitutesComponent},
       {path:"institute",component:InstitutesComponent},
-      {path:"course",component:CoursesComponent},
-      {path:"addcourse",component:AddcourseComponent},
-      {path:"editcourse",component:EditcourseComponent},
+      {path:"course/:instituteId",component:CoursesComponent},
+      {path:"addcourse/:instituteId",component:AddcourseComponent},
+      {path:"editcourse/:courseId",component:EditcourseComponent},
       {path:"students",component:UserComponent},
       {path:"addstudent",component:AdduserComponent},
       {path:"editstudent",component:EdituserComponent},
       {path:"addinstitute",component:AddinstituteComponent},
-      {path:"editinstitute",component:EditinstituteComponent}
-
-   ]
+      {path:"editinstitute",component:EditinstituteComponent},
+      {path:"editinstitute/:instituteId",component:EditinstituteComponent},
+   ],
+    // canActivate: [AuthComponent]
   },
 
 ];
